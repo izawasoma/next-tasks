@@ -1,7 +1,6 @@
 "use client";
 
 import { createTask, FormState } from "@/actions/task";
-import { error } from "console";
 import { useFormState, useFormStatus } from "react-dom";
 
 const NewTaskForm = () => {

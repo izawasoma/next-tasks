@@ -2,7 +2,6 @@
 
 import { Task, TaskModel } from "@/models/task";
 import { connectDb } from "@/utils/database";
-import { connect } from "http2";
 import { redirect } from "next/navigation";
 
 export interface FormState {
@@ -20,7 +19,7 @@ export const createTask = async (state: FormState, formData: FormData) => {
   try {
     await connectDb();
     await TaskModel.create(newTask);
-  } catch (error) {
+  } catch {
     state.error = "タスクの作成に失敗しました。";
     return state;
   }
@@ -43,7 +42,7 @@ export const updateTask = async (
   try {
     await connectDb();
     await TaskModel.updateOne({ _id: sid }, updateTask);
-  } catch (error) {
+  } catch {
     state.error = "タスクの更新に失敗しました。";
     return state;
   }
@@ -58,7 +57,7 @@ export const deleteTask = async (
   try {
     await connectDb();
     await TaskModel.deleteOne({ _id: sid });
-  } catch (error) {
+  } catch {
     state.error = "タスクの削除に失敗しました。";
     return state;
   }

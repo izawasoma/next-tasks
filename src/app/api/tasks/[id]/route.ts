@@ -13,7 +13,7 @@ export const GET = async (
       return NextResponse.json({ message: "タスクが見つかりませんでした" }, { status: 404 });
     }
     return NextResponse.json({ message: "タスクの取得に成功しました", task })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "タスクの取得に失敗しました" }, { status: 500 });
   }
 };
